@@ -15,6 +15,8 @@ Game Basics:
 Little game about bugs and puzzles, should take like ~30 minutes, there is A save system, but I wouldn't trust it (*gulp*) 
 Controls are explained in the first level, sorry no volume controls, no time. Sound credits go out to Pixabay, majority of the effects are there's with modifications in Godot. Also, rate me on stardance! PLEASE!
 Game file should be accessible to people on MacOS, Web, and windows, but I don't know if the mac version works. All that's on Itch
-Thanks again! 
+There were so many bugs that I had to go over by scouring the Godot Forums, so uh, big thanks to the Godot forums and Discord, I wouldn't have done this without those archives!
+
+Thanks for playing!
 
 ~Wilbot
