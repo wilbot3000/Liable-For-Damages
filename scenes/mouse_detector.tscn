@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://djqrojswtfprm"]
+
+[ext_resource type="Script" uid="uid://t4nxql0qp6rf" path="res://scripts/mouse_detector.gd" id="1_qps8i"]
+[ext_resource type="FontFile" uid="uid://s448d3gwm8h" path="res://Assets/fonts/Magic man.ttf" id="2_eiweh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fx2g8"]
+line_spacing = 1.0
+font = ExtResource("2_eiweh")
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.18431373)
+
+[node name="mouse_detector" type="Area2D" unique_id=997082355]
+script = ExtResource("1_qps8i")
+
+[node name="click_label" type="Label" parent="." unique_id=1791308249]
+offset_left = -9.0
+offset_top = -6.0
+offset_right = 66.0
+offset_bottom = 18.0
+scale = Vector2(0.25, 0.25)
+theme_override_constants/shadow_outline_size = 0
+theme_override_font_sizes/font_size = 6
+text = "Click LMB"
+label_settings = SubResource("LabelSettings_fx2g8")
+
+[node name="click_timer" type="Timer" parent="." unique_id=941521465]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="timeout" from="click_timer" to="." method="_on_click_timer_timeout"]

@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://idmve15yf7s8"]
+
+[ext_resource type="Texture2D" uid="uid://6ll5jmcxj2aw" path="res://Assets/sprites/locked door-Sheet.png" id="1_xxbgt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sk180"]
+size = Vector2(16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5arol"]
+atlas = ExtResource("1_xxbgt")
+region = Rect2(48, 336, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhpxm"]
+atlas = ExtResource("1_xxbgt")
+region = Rect2(64, 336, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c08eo"]
+atlas = ExtResource("1_xxbgt")
+region = Rect2(80, 336, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82cfl"]
+atlas = ExtResource("1_xxbgt")
+region = Rect2(16, 336, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcund"]
+atlas = ExtResource("1_xxbgt")
+region = Rect2(32, 336, 16, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4fqol"]
+animations = [{
+"frames": [{
+"duration": 7.5,
+"texture": SubResource("AtlasTexture_5arol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhpxm")
+}],
+"loop": false,
+"name": &"activation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c08eo")
+}],
+"loop": true,
+"name": &"broken D:",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.6,
+"texture": SubResource("AtlasTexture_82cfl")
+}, {
+"duration": 3.6,
+"texture": SubResource("AtlasTexture_tcund")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="door_terminal_locked" type="Area2D" unique_id=1597139228]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2044158520]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_sk180")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1156560794]
+position = Vector2(0, -24)
+sprite_frames = SubResource("SpriteFrames_4fqol")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.70794934

@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://gt0rbgkuw028"]
+
+[ext_resource type="Texture2D" uid="uid://cgi3clr4r3ss5" path="res://Assets/sprites/big tiles-Sheet.png" id="1_7di02"]
+[ext_resource type="Script" uid="uid://dugyixdokk18x" path="res://scenes/forklift_variable.gd" id="2_4fdgo"]
+[ext_resource type="AudioStream" uid="uid://cmjbms45w6ls4" path="res://Assets/othersounds/freesound_community-motor3-58848.mp3" id="3_ljei1"]
+
+[sub_resource type="Animation" id="Animation_4fdgo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(51, 89)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("door_sound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ljei1"]
+resource_name = "go_down"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.96666664, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(51, -26), Vector2(51, 20), Vector2(51, 64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("door_sound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.06666667, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_7gu2x"]
+resource_name = "go_up"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(51, 64), Vector2(51, 8.499992), Vector2(51, -26)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("door_sound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aibit"]
+_data = {
+&"RESET": SubResource("Animation_4fdgo"),
+&"go_down": SubResource("Animation_ljei1"),
+&"go_up": SubResource("Animation_7gu2x")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6764j"]
+size = Vector2(61, 4)
+
+[node name="forklift_variable" type="Sprite2D" unique_id=1300762458]
+texture = ExtResource("1_7di02")
+hframes = 7
+vframes = 7
+frame = 3
+script = ExtResource("2_4fdgo")
+
+[node name="forklifter" type="AnimatableBody2D" parent="." unique_id=1062190115]
+position = Vector2(51, 89)
+
+[node name="Sprite2D" type="Sprite2D" parent="forklifter" unique_id=1002080554]
+position = Vector2(-2, 5)
+texture = ExtResource("1_7di02")
+offset = Vector2(120, -120)
+hframes = 7
+vframes = 7
+frame = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="forklifter" unique_id=1519364169]
+libraries/ = SubResource("AnimationLibrary_aibit")
+autoplay = &"go_up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="forklifter" unique_id=1157699865]
+position = Vector2(28.5, 3)
+shape = SubResource("RectangleShape2D_6764j")
+
+[node name="door_sound" type="AudioStreamPlayer2D" parent="forklifter" unique_id=925864245]
+position = Vector2(-51, -79)
+stream = ExtResource("3_ljei1")
+volume_db = -20.0
+pitch_scale = 1.75
+max_distance = 240.0
+attenuation = 2.5491211
+bus = &"environment"

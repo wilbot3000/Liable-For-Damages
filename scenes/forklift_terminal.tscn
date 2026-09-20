@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://2vj8kv8k6d6h"]
+
+[ext_resource type="Texture2D" uid="uid://cqgewwim37yc2" path="res://Assets/sprites/forklift_interface-Sheet.png" id="1_gkjfi"]
+[ext_resource type="Script" uid="uid://bdi7moaji2dcs" path="res://scripts/forklift_terminal.gd" id="2_bf7nh"]
+[ext_resource type="PackedScene" uid="uid://djqrojswtfprm" path="res://scenes/mouse_detector.tscn" id="3_0qsvk"]
+[ext_resource type="Texture2D" uid="uid://cer53txcxfu3n" path="res://Assets/sprites/exit.png" id="4_t1oud"]
+[ext_resource type="AudioStream" uid="uid://fv47ohrc0q61" path="res://Assets/othersounds/dragon-studio-button-press-2-386176_trimmed.mp3" id="5_bf7nh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dy35x"]
+atlas = ExtResource("1_gkjfi")
+region = Rect2(375, 0, 125, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4snum"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dy35x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdbuj"]
+size = Vector2(7, 17.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_negdf"]
+size = Vector2(81, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p14wo"]
+atlas = ExtResource("1_gkjfi")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhv55"]
+atlas = ExtResource("1_gkjfi")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibkl8"]
+atlas = ExtResource("1_gkjfi")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gy0x"]
+atlas = ExtResource("1_gkjfi")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ink0q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p14wo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhv55")
+}],
+"loop": false,
+"name": &"turn_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibkl8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gy0x")
+}],
+"loop": false,
+"name": &"turn_up",
+"speed": 5.0
+}]
+
+[node name="forklift_terminal" type="AnimatedSprite2D" unique_id=1262199576]
+process_mode = 3
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_4snum")
+autoplay = "default"
+offset = Vector2(34.5, -42)
+script = ExtResource("2_bf7nh")
+
+[node name="mouse_detector" parent="." unique_id=997082355 instance=ExtResource("3_0qsvk")]
+position = Vector2(4, -44)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mouse_detector" unique_id=1846837395]
+position = Vector2(-4, 43.625)
+shape = SubResource("RectangleShape2D_jdbuj")
+
+[node name="player_detector" type="Area2D" parent="." unique_id=1021185870]
+position = Vector2(34, -41)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detector" unique_id=334150669]
+position = Vector2(-34, 41)
+shape = SubResource("RectangleShape2D_negdf")
+
+[node name="terminal_interface" type="AnimatedSprite2D" parent="." unique_id=323994666]
+z_index = 31
+position = Vector2(105, -28)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ink0q")
+animation = &"turn_up"
+autoplay = "turn_up"
+offset = Vector2(13.5, -13.5)
+
+[node name="sign_interface_exit" type="TextureButton" parent="terminal_interface" unique_id=326118827]
+clip_contents = true
+custom_minimum_size = Vector2(8, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 31.0
+offset_top = -33.0
+offset_right = -60.0
+offset_bottom = -124.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_t1oud")
+ignore_texture_size = true
+stretch_mode = 1
+
+[node name="slider" type="Button" parent="terminal_interface" unique_id=1570013626]
+z_index = 36
+offset_left = 23.0
+offset_top = -24.5
+offset_right = 31.0
+offset_bottom = 33.485
+size_flags_vertical = 4
+flat = true
+
+[node name="button_pressed" type="AudioStreamPlayer2D" parent="." unique_id=1455417436]
+stream = ExtResource("5_bf7nh")
+volume_db = -20.0
+max_polyphony = 4
+
+[connection signal="body_entered" from="player_detector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="player_detector" to="." method="_on_player_detector_body_exited"]
+[connection signal="pressed" from="terminal_interface/sign_interface_exit" to="." method="_on_calendar_exit_pressed"]
+[connection signal="pressed" from="terminal_interface/sign_interface_exit" to="." method="_on_sign_interface_exit_pressed"]
+[connection signal="pressed" from="terminal_interface/slider" to="." method="_on_slider_pressed"]

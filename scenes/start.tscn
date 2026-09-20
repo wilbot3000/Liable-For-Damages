@@ -1,0 +1,289 @@
+[gd_scene format=3 uid="uid://ct14rlikcc2a6"]
+
+[ext_resource type="Script" uid="uid://gkkjdhjhxx3f" path="res://scripts/start.gd" id="1_8jfef"]
+[ext_resource type="Texture2D" uid="uid://dcn207nujr1k6" path="res://Assets/sprites/start_screen.png" id="1_jaeev"]
+[ext_resource type="FontFile" uid="uid://s448d3gwm8h" path="res://Assets/fonts/Magic man.ttf" id="2_u80x2"]
+[ext_resource type="Texture2D" uid="uid://ds1ge8o7uuuef" path="res://Assets/sprites/buttons/background.png" id="3_bodal"]
+[ext_resource type="Texture2D" uid="uid://reybcrsv5mfn" path="res://Assets/sprites/buttons/buttons10.png" id="3_y16t7"]
+[ext_resource type="Texture2D" uid="uid://d00j2g5wbcesw" path="res://Assets/sprites/buttons/buttons12.png" id="4_4ge6i"]
+[ext_resource type="Texture2D" uid="uid://fqnpivif3cds" path="res://Assets/sprites/buttons/buttons11.png" id="5_8itgj"]
+[ext_resource type="Texture2D" uid="uid://cumgkr3k1g7mb" path="res://Assets/sprites/buttons/buttons1.png" id="6_1nvso"]
+[ext_resource type="Texture2D" uid="uid://ck2i8g7e48oyd" path="res://Assets/sprites/buttons/buttons4.png" id="6_tn317"]
+[ext_resource type="Texture2D" uid="uid://dwntprbl1y6cc" path="res://Assets/sprites/buttons/buttons3.png" id="7_gsp51"]
+[ext_resource type="Texture2D" uid="uid://muwfdcgov03n" path="res://Assets/sprites/buttons/buttons6.png" id="7_m8nf6"]
+[ext_resource type="Texture2D" uid="uid://c22gxaoqnwlj8" path="res://Assets/sprites/buttons/buttons5.png" id="8_pgjjs"]
+[ext_resource type="Texture2D" uid="uid://b0qq50bknga82" path="res://Assets/sprites/buttons/buttons2.png" id="8_r8uic"]
+[ext_resource type="Texture2D" uid="uid://cx2u2vgn1k140" path="res://Assets/sprites/buttons/buttons7.png" id="9_x1pfr"]
+[ext_resource type="Texture2D" uid="uid://b1txuwep6xewo" path="res://Assets/sprites/buttons/buttons9.png" id="10_n0tym"]
+[ext_resource type="Texture2D" uid="uid://ff2bk0vq17gy" path="res://Assets/sprites/buttons/buttons8.png" id="11_8jfef"]
+[ext_resource type="Texture2D" uid="uid://cer53txcxfu3n" path="res://Assets/sprites/exit.png" id="17_qfvu4"]
+[ext_resource type="Texture2D" uid="uid://eddjl0rcxa1p" path="res://Assets/sprites/buttons/load_button1.png" id="18_aox1m"]
+[ext_resource type="Texture2D" uid="uid://bt4s25vdirlfr" path="res://Assets/sprites/buttons/load_button2.png" id="19_hp05y"]
+[ext_resource type="Texture2D" uid="uid://d2g7tnvfhxm4h" path="res://Assets/sprites/buttons/load_button.png" id="20_g3i1d"]
+[ext_resource type="AudioStream" uid="uid://fv47ohrc0q61" path="res://Assets/othersounds/dragon-studio-button-press-2-386176_trimmed.mp3" id="21_hp05y"]
+[ext_resource type="AudioStream" uid="uid://clojgdc4dfx5" path="res://Assets/othersounds/dragon-studio-creepy-industrial-sounds-ambience-482892.mp3" id="22_cdrmf"]
+[ext_resource type="AudioStream" uid="uid://x8vo63vavpb8" path="res://Assets/othersounds/stereogenicstudio-ambience-roomtone-33-404108.mp3" id="22_g3i1d"]
+
+[node name="start_screen" type="Node2D" unique_id=2024551170]
+script = ExtResource("1_8jfef")
+
+[node name="satrt_baclkground" type="Sprite2D" parent="." unique_id=1777399834]
+self_modulate = Color(0.33182234, 0.33182234, 0.33182234, 1)
+position = Vector2(742, 322)
+scale = Vector2(7.5, 7.5)
+texture = ExtResource("1_jaeev")
+
+[node name="Control" type="Control" parent="." unique_id=2068547032]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control" unique_id=717714368]
+layout_mode = 0
+offset_left = 49.0
+offset_top = -36.0
+offset_right = 1099.0
+offset_bottom = 144.0
+theme_override_colors/font_color = Color(18.892157, 7.9756656, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7411765)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_u80x2")
+theme_override_font_sizes/font_size = 120
+text = "LIABLE FOR DAMAGES"
+
+[node name="Label2" type="Label" parent="Control" unique_id=1091178558]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 69.0
+offset_right = 1280.0
+offset_bottom = 249.0
+theme_override_colors/font_color = Color(1.0659664, 0.42011642, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7411765)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_u80x2")
+theme_override_font_sizes/font_size = 72
+text = "A game by Wil Brunner"
+
+[node name="Credits" type="TextureButton" parent="Control" unique_id=431594910]
+clip_contents = true
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 425.9999
+offset_top = 538.00006
+offset_right = 438.9999
+offset_bottom = 514.00006
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, -5)
+texture_normal = ExtResource("3_y16t7")
+texture_pressed = ExtResource("4_4ge6i")
+texture_hover = ExtResource("5_8itgj")
+ignore_texture_size = true
+flip_v = true
+
+[node name="Start" type="TextureButton" parent="Control" unique_id=377403241]
+clip_contents = true
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 461.00003
+offset_top = 298.0
+offset_right = 460.00003
+offset_bottom = 274.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, -5)
+texture_normal = ExtResource("6_1nvso")
+texture_pressed = ExtResource("7_gsp51")
+texture_hover = ExtResource("8_r8uic")
+ignore_texture_size = true
+flip_v = true
+
+[node name="Quit" type="TextureButton" parent="Control" unique_id=1350659543]
+clip_contents = true
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 480.00003
+offset_top = 458.0
+offset_right = 472.0
+offset_bottom = 434.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, -5)
+texture_normal = ExtResource("9_x1pfr")
+texture_pressed = ExtResource("10_n0tym")
+texture_hover = ExtResource("11_8jfef")
+ignore_texture_size = true
+flip_v = true
+
+[node name="Settings" type="TextureButton" parent="Control" unique_id=1983616328]
+light_mask = 0
+z_index = 3
+clip_contents = true
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 407.00003
+offset_top = 378.0
+offset_right = 427.00003
+offset_bottom = 354.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, -5)
+texture_normal = ExtResource("6_tn317")
+texture_pressed = ExtResource("7_m8nf6")
+texture_hover = ExtResource("8_pgjjs")
+ignore_texture_size = true
+flip_v = true
+
+[node name="background" type="Sprite2D" parent="." unique_id=1487420212]
+visible = false
+light_mask = 0
+z_index = 10
+position = Vector2(566, 327)
+scale = Vector2(8, 8)
+texture = ExtResource("3_bodal")
+
+[node name="credit_exit" type="TextureButton" parent="background" unique_id=2034498983]
+light_mask = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 34.75
+offset_top = -40.0
+offset_right = -35.75
+offset_bottom = -111.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("17_qfvu4")
+ignore_texture_size = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="background" unique_id=1235402027]
+offset_left = -36.625
+offset_top = -39.5
+offset_right = 37.375
+offset_bottom = 37.5
+theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.23137255)
+theme_override_constants/paragraph_spacing = -10
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_fonts/font = ExtResource("2_u80x2")
+theme_override_font_sizes/font_size = 8
+text = "ART DIRECTOR:
+  WILSON BRUNNER
+GAME DEVELOPER:
+  WILSON BRUNNER
+SOUND DESIGNER:
+  WILSON BRUNNER
+STORY DESIGNER:
+  WILSON BRUNNER
+CHARACTER DESIGNER:
+  WILSON BRUNNER
+LEVEL DESIGN:
+  WILSON BRUNNER
+GAME DEVELOPER:
+  WILSON BRUNNER"
+
+[node name="Settings_screen" type="Sprite2D" parent="." unique_id=1220775797]
+visible = false
+light_mask = 0
+z_index = 10
+position = Vector2(566, 327)
+scale = Vector2(8, 8)
+texture = ExtResource("3_bodal")
+
+[node name="settings_exit" type="TextureButton" parent="Settings_screen" unique_id=1021959647]
+light_mask = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 34.5
+offset_top = -39.0
+offset_right = -36.0
+offset_bottom = -110.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("17_qfvu4")
+ignore_texture_size = true
+stretch_mode = 1
+
+[node name="Load" type="TextureButton" parent="Settings_screen" unique_id=1076598144]
+offset_left = -36.0
+offset_top = -21.0
+offset_right = -4.0
+offset_bottom = -6.0
+scale = Vector2(1, -1)
+texture_normal = ExtResource("18_aox1m")
+texture_pressed = ExtResource("19_hp05y")
+texture_hover = ExtResource("20_g3i1d")
+ignore_texture_size = true
+flip_v = true
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=744074365]
+position = Vector2(404, 309)
+color = Color(1.1730844, 0, 0, 1)
+energy = 12.1
+texture = ExtResource("3_bodal")
+
+[node name="PointLight2D2" type="PointLight2D" parent="." unique_id=81440220]
+position = Vector2(301, 310)
+color = Color(1.1730844, 0, 0, 1)
+energy = 12.1
+texture = ExtResource("3_bodal")
+
+[node name="Timer" type="Timer" parent="." unique_id=1128830811]
+wait_time = 0.3
+one_shot = true
+
+[node name="button_pressed" type="AudioStreamPlayer2D" parent="." unique_id=1130483508]
+stream = ExtResource("21_hp05y")
+volume_db = -20.0
+max_polyphony = 4
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="." unique_id=1738854241]
+stream = ExtResource("22_cdrmf")
+volume_db = -30.0
+autoplay = true
+bus = &"ambience"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1684362561]
+stream = ExtResource("22_g3i1d")
+volume_db = -20.0
+autoplay = true
+bus = &"ambience"
+
+[connection signal="pressed" from="Control/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Control/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Control/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Control/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="background/credit_exit" to="." method="_on_credit_exit_pressed"]
+[connection signal="pressed" from="Settings_screen/settings_exit" to="." method="_on_settings_exit_pressed"]
+[connection signal="pressed" from="Settings_screen/Load" to="." method="_on_load_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

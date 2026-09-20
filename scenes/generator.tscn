@@ -1,0 +1,182 @@
+[gd_scene format=3 uid="uid://bjquoufrt8d1j"]
+
+[ext_resource type="PackedScene" uid="uid://djqrojswtfprm" path="res://scenes/mouse_detector.tscn" id="1_5yxne"]
+[ext_resource type="Texture2D" uid="uid://dt2a2gkcj8uus" path="res://Assets/sprites/genrator-Sheet.png" id="1_w5vnv"]
+[ext_resource type="Script" uid="uid://sa14cbqjvqv5" path="res://scenes/generator.gd" id="2_ef8yp"]
+[ext_resource type="AudioStream" uid="uid://btm27eo0mlhc" path="res://Assets/othersounds/freesound_community-spooky-vending-machine-hum-20000.mp3" id="4_ionxw"]
+[ext_resource type="AudioStream" uid="uid://c2r8xtxmlnvdw" path="res://Assets/othersounds/freesound_community-washing-machine-71102.mp3" id="5_ychy0"]
+[ext_resource type="AudioStream" uid="uid://nkfsb1qtgm5f" path="res://Assets/othersounds/hasin2004-machine-working-sound-244256.mp3" id="6_g6cet"]
+[ext_resource type="AudioStream" uid="uid://0emkwojr3g6t" path="res://Assets/othersounds/freesound_community-machine-powering-down-84722.mp3" id="7_fyay7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ef8yp"]
+atlas = ExtResource("1_w5vnv")
+region = Rect2(0, 960, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqoq6"]
+atlas = ExtResource("1_w5vnv")
+region = Rect2(320, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pjfl"]
+atlas = ExtResource("1_w5vnv")
+region = Rect2(640, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgmdj"]
+atlas = ExtResource("1_w5vnv")
+region = Rect2(960, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ionxw"]
+atlas = ExtResource("1_w5vnv")
+region = Rect2(0, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ychy0"]
+atlas = ExtResource("1_w5vnv")
+region = Rect2(320, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6cet"]
+atlas = ExtResource("1_w5vnv")
+region = Rect2(640, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fyay7"]
+atlas = ExtResource("1_w5vnv")
+region = Rect2(960, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c80ml"]
+atlas = ExtResource("1_w5vnv")
+region = Rect2(0, 640, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sebn1"]
+atlas = ExtResource("1_w5vnv")
+region = Rect2(320, 640, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsv7b"]
+atlas = ExtResource("1_w5vnv")
+region = Rect2(640, 640, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvflr"]
+atlas = ExtResource("1_w5vnv")
+region = Rect2(960, 640, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2mmg"]
+atlas = ExtResource("1_w5vnv")
+region = Rect2(0, 320, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t474r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ef8yp")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_rqoq6")
+}, {
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_4pjfl")
+}, {
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_kgmdj")
+}, {
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_ionxw")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ychy0")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_g6cet")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_fyay7")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_c80ml")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_sebn1")
+}, {
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_qsv7b")
+}, {
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_yvflr")
+}, {
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_v2mmg")
+}],
+"loop": false,
+"name": &"powering off",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ef8yp"]
+size = Vector2(12, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5vnv"]
+size = Vector2(58.5, 28)
+
+[node name="generator" type="AnimatedSprite2D" unique_id=2043316171]
+sprite_frames = SubResource("SpriteFrames_t474r")
+animation = &"on"
+autoplay = "on"
+frame_progress = 0.49743807
+script = ExtResource("2_ef8yp")
+
+[node name="mouse_detector" parent="." unique_id=997082355 instance=ExtResource("1_5yxne")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mouse_detector" unique_id=1312086783]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+self_modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(83, 147)
+shape = SubResource("RectangleShape2D_ef8yp")
+
+[node name="player_detector" type="Area2D" parent="." unique_id=98698997]
+position = Vector2(83, 146)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detector" unique_id=851563281]
+shape = SubResource("RectangleShape2D_w5vnv")
+
+[node name="machinesound1" type="AudioStreamPlayer2D" parent="." unique_id=1604648302]
+position = Vector2(17, 122)
+stream = ExtResource("4_ionxw")
+autoplay = true
+max_distance = 240.0
+attenuation = 2.3784144
+bus = &"environment"
+parameters/looping = true
+
+[node name="machinesound2" type="AudioStreamPlayer2D" parent="." unique_id=1510693475]
+position = Vector2(-110, 86)
+stream = ExtResource("5_ychy0")
+autoplay = true
+max_distance = 240.0
+attenuation = 2.3784144
+bus = &"environment"
+parameters/looping = true
+
+[node name="machinesound3" type="AudioStreamPlayer2D" parent="." unique_id=2027722073]
+position = Vector2(25, 68)
+stream = ExtResource("6_g6cet")
+autoplay = true
+max_distance = 240.0
+attenuation = 2.219139
+bus = &"environment"
+parameters/looping = true
+
+[node name="powerdown" type="AudioStreamPlayer2D" parent="." unique_id=368151840]
+stream = ExtResource("7_fyay7")
+volume_db = -10.0
+max_distance = 500.0
+attenuation = 1.9318731
+bus = &"environment"
+
+[connection signal="body_entered" from="player_detector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="player_detector" to="." method="_on_player_detector_body_exited"]

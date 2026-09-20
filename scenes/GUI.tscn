@@ -1,0 +1,192 @@
+[gd_scene format=3 uid="uid://bhvib0egagwpf"]
+
+[ext_resource type="Script" uid="uid://c7c3ienjddiem" path="res://scripts/gui.gd" id="1_5j4t3"]
+[ext_resource type="FontFile" uid="uid://s448d3gwm8h" path="res://Assets/fonts/Magic man.ttf" id="2_shsct"]
+[ext_resource type="Texture2D" uid="uid://b6j43gm3541nn" path="res://Assets/sprites/black.jpg" id="3_shsct"]
+[ext_resource type="Texture2D" uid="uid://cw6x0185iq1hg" path="res://Assets/sprites/yellow.jpg" id="4_tqy5q"]
+[ext_resource type="Texture2D" uid="uid://dqghrppmyyg0e" path="res://Assets/sprites/loading_background.png" id="5_tqy5q"]
+[ext_resource type="Texture2D" uid="uid://cuboquense12x" path="res://Assets/sprites/death_hurt.png" id="6_hywd1"]
+[ext_resource type="Texture2D" uid="uid://ceohowjk7r6f5" path="res://Assets/sprites/death_buttons1.png" id="7_cekc3"]
+[ext_resource type="Texture2D" uid="uid://dla4hgseaqlx8" path="res://Assets/sprites/death_buttons3.png" id="8_1i4pd"]
+[ext_resource type="Texture2D" uid="uid://bs6nnle0uspo6" path="res://Assets/sprites/death_buttons2.png" id="9_y0luo"]
+[ext_resource type="Texture2D" uid="uid://bn2ng3psk5fd7" path="res://Assets/sprites/death_buttons4.png" id="10_tyhcs"]
+[ext_resource type="Texture2D" uid="uid://cxk45cuo1xpn2" path="res://Assets/sprites/death_buttons6.png" id="11_dcyui"]
+[ext_resource type="Texture2D" uid="uid://celpnxg8cpfqy" path="res://Assets/sprites/death_buttons5.png" id="12_8inel"]
+[ext_resource type="Texture2D" uid="uid://dsrupgj8xaxia" path="res://Assets/sprites/death.png" id="13_dcyui"]
+[ext_resource type="Texture2D" uid="uid://ds1ge8o7uuuef" path="res://Assets/sprites/buttons/background.png" id="14_ajyu1"]
+[ext_resource type="Texture2D" uid="uid://c1n08di721fwh" path="res://Assets/sprites/buttons/buttons16.png" id="15_m8p4d"]
+[ext_resource type="Texture2D" uid="uid://c53qux80r5j5g" path="res://Assets/sprites/buttons/buttons18.png" id="16_gm6g3"]
+[ext_resource type="Texture2D" uid="uid://byer1kv57s4nl" path="res://Assets/sprites/buttons/buttons17.png" id="17_adr5q"]
+[ext_resource type="Texture2D" uid="uid://ckr71syn7hyy5" path="res://Assets/sprites/buttons/buttons19.png" id="18_ajnbq"]
+[ext_resource type="Texture2D" uid="uid://cer53txcxfu3n" path="res://Assets/sprites/exit.png" id="18_m8p4d"]
+[ext_resource type="Texture2D" uid="uid://dsyh4qy5oqh62" path="res://Assets/sprites/buttons/buttons21.png" id="19_kdart"]
+[ext_resource type="Texture2D" uid="uid://mmygikwrpg0q" path="res://Assets/sprites/buttons/buttons20.png" id="20_2yx18"]
+[ext_resource type="AudioStream" uid="uid://fv47ohrc0q61" path="res://Assets/othersounds/dragon-studio-button-press-2-386176_trimmed.mp3" id="22_kdart"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tyhcs"]
+
+[node name="GUI" type="CanvasLayer" unique_id=1517181742]
+follow_viewport_enabled = true
+script = ExtResource("1_5j4t3")
+
+[node name="stamina bar" type="TextureProgressBar" parent="." unique_id=1600499732]
+offset_left = 723.00006
+offset_top = 27.999998
+offset_right = 1723.0
+offset_bottom = 328.0
+scale = Vector2(0.40307125, 0.08306079)
+max_value = 10.0
+step = 0.1
+nine_patch_stretch = true
+texture_under = ExtResource("3_shsct")
+texture_progress = ExtResource("4_tqy5q")
+
+[node name="loading_fade" type="Sprite2D" parent="." unique_id=1866670903]
+position = Vector2(567, 322)
+scale = Vector2(2.1, 2.1)
+texture = ExtResource("5_tqy5q")
+
+[node name="hurt_sprite" type="Sprite2D" parent="." unique_id=1970831227]
+position = Vector2(575, 331)
+scale = Vector2(4, 4)
+texture = ExtResource("6_hywd1")
+
+[node name="blackout" type="Sprite2D" parent="." unique_id=1394406237]
+self_modulate = Color(0.46931037, 0.46931037, 0.46931037, 1)
+z_index = 30
+position = Vector2(588, 368)
+texture = ExtResource("3_shsct")
+
+[node name="Sprite2D" type="Sprite2D" parent="blackout" unique_id=1560866557]
+self_modulate = Color(1.9429119, 1.9429119, 1.9429119, 1)
+position = Vector2(-1, -368)
+scale = Vector2(4, 4)
+texture = ExtResource("13_dcyui")
+
+[node name="Buttons" type="Control" parent="blackout" unique_id=1537048654]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="game_spawn" type="TextureButton" parent="blackout/Buttons" unique_id=1349827468]
+z_index = 32
+material = SubResource("CanvasItemMaterial_tyhcs")
+layout_mode = 0
+offset_left = -130.0
+offset_top = 94.0
+offset_right = -82.0
+offset_bottom = 110.0
+scale = Vector2(6, 6)
+texture_normal = ExtResource("10_tyhcs")
+texture_pressed = ExtResource("11_dcyui")
+texture_hover = ExtResource("12_8inel")
+
+[node name="game_exit" type="TextureButton" parent="blackout/Buttons" unique_id=200608463]
+z_index = 32
+material = SubResource("CanvasItemMaterial_tyhcs")
+layout_mode = 0
+offset_left = -155.0
+offset_top = -11.0
+offset_right = -107.0
+offset_bottom = 5.0
+scale = Vector2(6, 6)
+texture_normal = ExtResource("7_cekc3")
+texture_pressed = ExtResource("8_1i4pd")
+texture_hover = ExtResource("9_y0luo")
+
+[node name="death_timer" type="Timer" parent="." unique_id=20862625]
+wait_time = 2.5
+one_shot = true
+
+[node name="reset_timer" type="Timer" parent="." unique_id=1626876224]
+wait_time = 3.0
+one_shot = true
+
+[node name="button_timer" type="Timer" parent="." unique_id=1354884456]
+wait_time = 2.0
+one_shot = true
+
+[node name="saved!" type="Label" parent="." unique_id=775052713]
+z_index = 35
+offset_left = 12.0
+offset_top = 601.0
+offset_right = 120.0
+offset_bottom = 637.0
+theme_override_colors/font_color = Color(0.7722583, 0.7722583, 0.7722583, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.627451)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_shsct")
+theme_override_font_sizes/font_size = 24
+text = "SAVED!! :D"
+
+[node name="saved_timer" type="Timer" parent="." unique_id=766456784]
+wait_time = 2.0
+one_shot = true
+
+[node name="menu_screen" type="Sprite2D" parent="." unique_id=353315216]
+visible = false
+z_index = 30
+position = Vector2(584.00006, 318)
+scale = Vector2(7, 7)
+texture = ExtResource("14_ajyu1")
+
+[node name="Save" type="TextureButton" parent="menu_screen" unique_id=1338266986]
+offset_left = -36.000008
+offset_top = -21.142857
+offset_right = -4.0000076
+offset_bottom = -6.1428566
+scale = Vector2(1, -1)
+texture_normal = ExtResource("15_m8p4d")
+texture_pressed = ExtResource("16_gm6g3")
+texture_hover = ExtResource("17_adr5q")
+ignore_texture_size = true
+flip_v = true
+
+[node name="Title" type="TextureButton" parent="menu_screen" unique_id=1594909742]
+offset_left = -35.571438
+offset_top = -3.0
+offset_right = 3.4285622
+offset_bottom = 12.0
+scale = Vector2(1, -1)
+texture_normal = ExtResource("18_ajnbq")
+texture_pressed = ExtResource("19_kdart")
+texture_hover = ExtResource("20_2yx18")
+ignore_texture_size = true
+flip_v = true
+
+[node name="settings_exit" type="TextureButton" parent="menu_screen" unique_id=175101991]
+light_mask = 0
+z_index = 32
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.999992
+offset_top = -41.999992
+offset_right = -38.000008
+offset_bottom = -113.00001
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("18_m8p4d")
+ignore_texture_size = true
+stretch_mode = 1
+
+[node name="button_pressed" type="AudioStreamPlayer2D" parent="." unique_id=1189095694]
+stream = ExtResource("22_kdart")
+volume_db = -20.0
+pitch_scale = 1.5
+max_polyphony = 4
+
+[connection signal="pressed" from="blackout/Buttons/game_spawn" to="." method="_on_game_spawn_pressed"]
+[connection signal="pressed" from="blackout/Buttons/game_exit" to="." method="_on_game_exit_pressed"]
+[connection signal="timeout" from="death_timer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="reset_timer" to="." method="_on_reset_timer_timeout"]
+[connection signal="timeout" from="button_timer" to="." method="_on_button_timer_timeout"]
+[connection signal="timeout" from="saved_timer" to="." method="_on_saved_timer_timeout"]
+[connection signal="pressed" from="menu_screen/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="menu_screen/Title" to="." method="_on_title_pressed"]
+[connection signal="pressed" from="menu_screen/settings_exit" to="." method="_on_settings_exit_pressed"]

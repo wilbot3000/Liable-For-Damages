@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://cjj0s2cp8vdtk"]
+
+[ext_resource type="Texture2D" uid="uid://6ll5jmcxj2aw" path="res://Assets/sprites/locked door-Sheet.png" id="1_gljsh"]
+[ext_resource type="Script" uid="uid://g7yce0tjl6gb" path="res://scripts/door_terminal.gd" id="1_konxn"]
+[ext_resource type="PackedScene" uid="uid://djqrojswtfprm" path="res://scenes/mouse_detector.tscn" id="3_465wb"]
+[ext_resource type="AudioStream" uid="uid://btm8bfn60dy5y" path="res://Assets/othersounds/freesound_community-beep-6-96243.mp3" id="4_l1tbn"]
+[ext_resource type="AudioStream" uid="uid://fv47ohrc0q61" path="res://Assets/othersounds/dragon-studio-button-press-2-386176_trimmed.mp3" id="5_lemx5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_konxn"]
+size = Vector2(13, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_465wb"]
+atlas = ExtResource("1_gljsh")
+region = Rect2(32, 144, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1tbn"]
+atlas = ExtResource("1_gljsh")
+region = Rect2(48, 144, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lemx5"]
+atlas = ExtResource("1_gljsh")
+region = Rect2(64, 144, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qa6fo"]
+atlas = ExtResource("1_gljsh")
+region = Rect2(0, 144, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_powxc"]
+atlas = ExtResource("1_gljsh")
+region = Rect2(16, 144, 16, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vavop"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_465wb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1tbn")
+}],
+"loop": false,
+"name": &"activation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lemx5")
+}],
+"loop": true,
+"name": &"broken D:",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.5,
+"texture": SubResource("AtlasTexture_qa6fo")
+}, {
+"duration": 3.5,
+"texture": SubResource("AtlasTexture_powxc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1tbn"]
+size = Vector2(12.5, 15.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_465wb"]
+size = Vector2(39.5, 49.34375)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_465wb"]
+polygon = PackedVector2Array(-7, 0, 7, 0, 7, -13, -5, -13, -5, -12, -6, -12, -6, -10, -7, -10)
+
+[node name="Door_terminal" type="Area2D" unique_id=543635535]
+script = ExtResource("1_konxn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=820537125]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_konxn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1707749973]
+z_index = 1
+position = Vector2(0, -24)
+sprite_frames = SubResource("SpriteFrames_vavop")
+animation = &"activation"
+autoplay = "idle"
+
+[node name="mouse_detector" parent="." unique_id=997082355 instance=ExtResource("3_465wb")]
+position = Vector2(1, -14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mouse_detector" unique_id=1039931635]
+position = Vector2(-1, 8)
+shape = SubResource("RectangleShape2D_l1tbn")
+
+[node name="Player_detector" type="Area2D" parent="." unique_id=482342849]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_detector" unique_id=2002479783]
+position = Vector2(0, -11)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_465wb")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=832749623]
+z_index = 1
+occluder = SubResource("OccluderPolygon2D_465wb")
+occluder_light_mask = 3
+
+[node name="beep" type="AudioStreamPlayer2D" parent="." unique_id=957938691]
+stream = ExtResource("4_l1tbn")
+volume_db = -37.0
+max_distance = 240.0
+attenuation = 2.9281716
+bus = &"environment"
+
+[node name="button_pressed" type="AudioStreamPlayer2D" parent="." unique_id=1615511456]
+stream = ExtResource("5_lemx5")
+volume_db = -20.0
+max_polyphony = 4
+
+[node name="bepp_timer" type="Timer" parent="." unique_id=375433425]
+wait_time = 0.75
+one_shot = true
+
+[connection signal="body_entered" from="Player_detector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="Player_detector" to="." method="_on_player_detector_body_exited"]
+[connection signal="timeout" from="bepp_timer" to="." method="_on_bepp_timer_timeout"]

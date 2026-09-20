@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://b8srg525pu42a"]
+
+[ext_resource type="Script" uid="uid://8amk1g86dcsp" path="res://scripts/loading_area.gd" id="1_mwi6k"]
+[ext_resource type="Texture2D" uid="uid://dqghrppmyyg0e" path="res://Assets/sprites/loading_background.png" id="2_hj1vb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mwi6k"]
+size = Vector2(132, 37)
+
+[node name="Loading_zone" type="Node2D" unique_id=1843420482]
+script = ExtResource("1_mwi6k")
+
+[node name="loading_area" type="Area2D" parent="." unique_id=61955910]
+
+[node name="loading_fade" type="Sprite2D" parent="loading_area" unique_id=2034568007]
+z_index = 17
+position = Vector2(567, 322)
+scale = Vector2(0.525, 0.525)
+texture = ExtResource("2_hj1vb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="loading_area" unique_id=1949945080]
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_mwi6k")
+
+[node name="Timer" type="Timer" parent="loading_area" unique_id=182257809]
+wait_time = 2.0
+
+[connection signal="body_entered" from="loading_area" to="." method="_on_loading_area_body_entered"]
+[connection signal="timeout" from="loading_area/Timer" to="." method="_on_timer_timeout"]

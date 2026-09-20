@@ -1,0 +1,273 @@
+[gd_scene format=3 uid="uid://smnobg5lidkw"]
+
+[ext_resource type="Script" uid="uid://c4kjypd1fji5" path="res://scripts/fly_enemy.gd" id="1_qyn3h"]
+[ext_resource type="Texture2D" uid="uid://dga5k5kldbgpp" path="res://Assets/sprites/flying_enemy-Sheet.png" id="2_qyn3h"]
+[ext_resource type="Script" uid="uid://bavs2jds7rqt7" path="res://scripts/hurtbox.gd" id="3_8fvip"]
+[ext_resource type="AudioStream" uid="uid://ba2u1b1oa1ghg" path="res://Assets/sounds/universfield-wet-splat-impact-567197.mp3" id="4_35qd7"]
+[ext_resource type="AudioStream" uid="uid://lnotcaqud0o3" path="res://Assets/sounds/freesound_community-mosquito-22808.mp3" id="5_34552"]
+[ext_resource type="AudioStream" uid="uid://deds5y2jgppw6" path="res://Assets/sounds/freesound_community-splat2ogg-14668.mp3" id="6_34552"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qyn3h"]
+radius = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8fvip"]
+radius = 111.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mbsbq"]
+radius = 42.107006
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_35qd7"]
+radius = 24.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fvip"]
+atlas = ExtResource("2_qyn3h")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbsbq"]
+atlas = ExtResource("2_qyn3h")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35qd7"]
+atlas = ExtResource("2_qyn3h")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34552"]
+atlas = ExtResource("2_qyn3h")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahhab"]
+atlas = ExtResource("2_qyn3h")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luopk"]
+atlas = ExtResource("2_qyn3h")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86vmx"]
+atlas = ExtResource("2_qyn3h")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8xuo"]
+atlas = ExtResource("2_qyn3h")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjcot"]
+atlas = ExtResource("2_qyn3h")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbhdi"]
+atlas = ExtResource("2_qyn3h")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xedn"]
+atlas = ExtResource("2_qyn3h")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5w0d5"]
+atlas = ExtResource("2_qyn3h")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n54rj"]
+atlas = ExtResource("2_qyn3h")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ned5y"]
+atlas = ExtResource("2_qyn3h")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wt2v8"]
+atlas = ExtResource("2_qyn3h")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gqxu8"]
+animations = [{
+"frames": [{
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_8fvip")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_mbsbq")
+}],
+"loop": true,
+"name": &"buzzleft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_35qd7")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_34552")
+}],
+"loop": true,
+"name": &"buzzmiddle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_ahhab")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_luopk")
+}],
+"loop": true,
+"name": &"buzzright",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_86vmx")
+}, {
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_u8xuo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjcot")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbhdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xedn")
+}],
+"loop": false,
+"name": &"shootleft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5w0d5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n54rj")
+}],
+"loop": false,
+"name": &"shootmiddle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ned5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wt2v8")
+}],
+"loop": false,
+"name": &"shootright",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_34552"]
+radius = 3.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1675229863]
+script = ExtResource("1_qyn3h")
+
+[node name="fly_collision" type="CollisionShape2D" parent="." unique_id=1097349343]
+shape = SubResource("CircleShape2D_qyn3h")
+debug_color = Color(0.95, 0, 0.57000035, 1)
+
+[node name="player_detection" type="Area2D" parent="." unique_id=552178573]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detection" unique_id=977610107]
+position = Vector2(0, 12)
+shape = SubResource("CircleShape2D_8fvip")
+
+[node name="noticesight_cooldown" type="Timer" parent="." unique_id=907379566]
+wait_time = 0.1
+one_shot = true
+
+[node name="noticehidden_cooldown" type="Timer" parent="." unique_id=1160613136]
+wait_time = 2.0
+one_shot = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=415262160]
+path_desired_distance = 6.0
+target_desired_distance = 9.223372e+18
+avoidance_enabled = true
+radius = 1.0
+max_neighbors = 100
+max_speed = 300.0
+
+[node name="player_dont_gofarther" type="Area2D" parent="." unique_id=885677511]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_dont_gofarther" unique_id=1430554494]
+position = Vector2(0, 12)
+shape = SubResource("CircleShape2D_mbsbq")
+
+[node name="player_move_away" type="Area2D" parent="." unique_id=1367621958]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_move_away" unique_id=1118769566]
+position = Vector2(0, 12)
+shape = SubResource("CircleShape2D_35qd7")
+
+[node name="fly_enemysprites" type="AnimatedSprite2D" parent="." unique_id=1848041548]
+position = Vector2(-13, -8)
+sprite_frames = SubResource("SpriteFrames_gqxu8")
+animation = &"explode"
+centered = false
+offset = Vector2(5, 0)
+
+[node name="shooting_cooldown" type="Timer" parent="." unique_id=215929977]
+wait_time = 4.0
+
+[node name="idle_random_timer" type="Timer" parent="." unique_id=294930058]
+wait_time = 6.0
+
+[node name="mouth" type="Marker2D" parent="." unique_id=1398471493]
+position = Vector2(-0.5, 3)
+
+[node name="shoot_reset" type="Timer" parent="." unique_id=1370506688]
+wait_time = 0.3
+one_shot = true
+
+[node name="hurtbox" type="Area2D" parent="." unique_id=1455629809]
+script = ExtResource("3_8fvip")
+metadata/_custom_type_script = "uid://bavs2jds7rqt7"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=1542488636]
+shape = SubResource("CircleShape2D_34552")
+
+[node name="death_timer" type="Timer" parent="." unique_id=2078244542]
+wait_time = 0.75
+
+[node name="explosion" type="AudioStreamPlayer2D" parent="." unique_id=1724268033]
+stream = ExtResource("4_35qd7")
+volume_db = -25.0
+pitch_scale = 1.5
+max_distance = 240.0
+bus = &"Enemies"
+
+[node name="Buzzing" type="AudioStreamPlayer2D" parent="." unique_id=51591197]
+stream = ExtResource("5_34552")
+volume_db = -37.0
+pitch_scale = 0.5
+autoplay = true
+max_distance = 240.0
+bus = &"Enemies"
+parameters/looping = true
+
+[node name="shoot" type="AudioStreamPlayer2D" parent="." unique_id=560013387]
+stream = ExtResource("6_34552")
+volume_db = -30.0
+pitch_scale = 1.7
+max_distance = 240.0
+bus = &"Enemies"
+
+[connection signal="body_entered" from="player_detection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="player_detection" to="." method="_on_player_detection_body_exited"]
+[connection signal="timeout" from="noticesight_cooldown" to="." method="_on_noticesight_cooldown_timeout"]
+[connection signal="timeout" from="noticehidden_cooldown" to="." method="_on_noticehidden_cooldown_timeout"]
+[connection signal="body_entered" from="player_dont_gofarther" to="." method="_on_player_dont_gofarther_body_entered"]
+[connection signal="body_exited" from="player_dont_gofarther" to="." method="_on_player_dont_gofarther_body_exited"]
+[connection signal="body_entered" from="player_move_away" to="." method="_on_player_move_away_body_entered"]
+[connection signal="body_exited" from="player_move_away" to="." method="_on_player_move_away_body_exited"]
+[connection signal="timeout" from="shooting_cooldown" to="." method="_on_shooting_cooldown_timeout"]
+[connection signal="timeout" from="idle_random_timer" to="." method="_on_idle_random_timer_timeout"]
+[connection signal="timeout" from="shoot_reset" to="." method="_on_shoot_reset_timeout"]
+[connection signal="timeout" from="death_timer" to="." method="_on_death_timer_timeout"]

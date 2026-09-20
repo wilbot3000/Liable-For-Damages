@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://dooapcmpc5jkm"]
+
+[ext_resource type="Texture2D" uid="uid://dt2a2gkcj8uus" path="res://Assets/sprites/genrator-Sheet.png" id="1_p3iik"]
+[ext_resource type="Script" uid="uid://gn15bkmb176m" path="res://generator_sign.gd" id="2_1g04i"]
+[ext_resource type="PackedScene" uid="uid://djqrojswtfprm" path="res://scenes/mouse_detector.tscn" id="3_hm5n5"]
+[ext_resource type="Texture2D" uid="uid://cer53txcxfu3n" path="res://Assets/sprites/exit.png" id="5_oym1b"]
+[ext_resource type="AudioStream" uid="uid://fv47ohrc0q61" path="res://Assets/othersounds/dragon-studio-button-press-2-386176_trimmed.mp3" id="5_p3iik"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8a5ka"]
+atlas = ExtResource("1_p3iik")
+region = Rect2(320, 960, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5kim7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8a5ka")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sbb2n"]
+size = Vector2(16, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_negdf"]
+size = Vector2(81, 37)
+
+[node name="generator_sign" type="AnimatedSprite2D" unique_id=1262199576]
+process_mode = 3
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_5kim7")
+autoplay = "default"
+frame_progress = 0.3510563
+script = ExtResource("2_1g04i")
+
+[node name="mouse_detector" parent="." unique_id=997082355 instance=ExtResource("3_hm5n5")]
+position = Vector2(-103, 106)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mouse_detector" unique_id=1846837395]
+position = Vector2(-49, 50.5)
+shape = SubResource("RectangleShape2D_sbb2n")
+
+[node name="player_detector" type="Area2D" parent="." unique_id=1021185870]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detector" unique_id=334150669]
+position = Vector2(-152, 157)
+shape = SubResource("RectangleShape2D_negdf")
+
+[node name="sign_interface" type="Sprite2D" parent="." unique_id=2050941553]
+z_index = 16
+position = Vector2(-7, 69)
+texture = ExtResource("1_p3iik")
+offset = Vector2(10, -45)
+hframes = 4
+vframes = 4
+
+[node name="sign_interface_exit" type="TextureButton" parent="sign_interface" unique_id=326118827]
+clip_contents = true
+custom_minimum_size = Vector2(8, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 114.0
+offset_top = -47.0
+offset_right = -197.0
+offset_bottom = -358.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("5_oym1b")
+ignore_texture_size = true
+stretch_mode = 1
+
+[node name="button_pressed" type="AudioStreamPlayer2D" parent="." unique_id=981002165]
+stream = ExtResource("5_p3iik")
+volume_db = -20.0
+max_polyphony = 4
+
+[connection signal="body_entered" from="player_detector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="player_detector" to="." method="_on_player_detector_body_exited"]
+[connection signal="pressed" from="sign_interface/sign_interface_exit" to="." method="_on_calendar_exit_pressed"]
+[connection signal="pressed" from="sign_interface/sign_interface_exit" to="." method="_on_sign_interface_exit_pressed"]

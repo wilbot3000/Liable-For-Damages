@@ -1,0 +1,182 @@
+[gd_scene format=3 uid="uid://brdewxmncwhek"]
+
+[ext_resource type="Texture2D" uid="uid://cgi3clr4r3ss5" path="res://Assets/sprites/big tiles-Sheet.png" id="1_yfis4"]
+[ext_resource type="PackedScene" uid="uid://djqrojswtfprm" path="res://scenes/mouse_detector.tscn" id="2_g22sf"]
+[ext_resource type="Script" uid="uid://c85aav1n36gdf" path="res://scripts/desk_sprite.gd" id="2_od1wm"]
+[ext_resource type="Texture2D" uid="uid://l3utvd1nsvd" path="res://Assets/sprites/desk_objects-Sheet.png" id="4_a41cf"]
+[ext_resource type="Texture2D" uid="uid://cer53txcxfu3n" path="res://Assets/sprites/exit.png" id="5_a41cf"]
+[ext_resource type="AudioStream" uid="uid://cbuk05jm686br" path="res://Assets/othersounds/jarasnat-open-the-drawer-sound-227896_trimmed.mp3" id="6_negdf"]
+[ext_resource type="AudioStream" uid="uid://fv47ohrc0q61" path="res://Assets/othersounds/dragon-studio-button-press-2-386176_trimmed.mp3" id="7_1hnka"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g22sf"]
+atlas = ExtResource("1_yfis4")
+region = Rect2(960, 1200, 240, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kyb3"]
+atlas = ExtResource("1_yfis4")
+region = Rect2(1200, 1200, 240, 240)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_od1wm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g22sf")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kyb3")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4kyb3"]
+size = Vector2(16, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_negdf"]
+size = Vector2(81, 37)
+
+[node name="desk_sprite" type="AnimatedSprite2D" unique_id=1262199576]
+process_mode = 3
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_od1wm")
+animation = &"new_animation"
+script = ExtResource("2_od1wm")
+
+[node name="mouse_detector" parent="." unique_id=997082355 instance=ExtResource("2_g22sf")]
+position = Vector2(-103, 106)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mouse_detector" unique_id=1846837395]
+position = Vector2(-1, 7)
+shape = SubResource("RectangleShape2D_4kyb3")
+
+[node name="player_detector" type="Area2D" parent="." unique_id=1021185870]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detector" unique_id=334150669]
+position = Vector2(-104, 107)
+shape = SubResource("RectangleShape2D_negdf")
+
+[node name="Calendar" type="Sprite2D" parent="." unique_id=2050941553]
+z_index = 16
+position = Vector2(-192, 1)
+texture = ExtResource("4_a41cf")
+offset = Vector2(120, -100)
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="calendar_exit" type="TextureButton" parent="Calendar" unique_id=326118827]
+clip_contents = true
+custom_minimum_size = Vector2(8, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.999996
+offset_top = -50.999992
+offset_right = -280.0
+offset_bottom = -354.99994
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("5_a41cf")
+stretch_mode = 0
+
+[node name="Note" type="Sprite2D" parent="." unique_id=1348836349]
+z_index = 16
+position = Vector2(3, -17.000008)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_a41cf")
+offset = Vector2(75, -80)
+hframes = 2
+vframes = 2
+
+[node name="note_exit" type="TextureButton" parent="Note" unique_id=2020016505]
+clip_contents = true
+custom_minimum_size = Vector2(8, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 61.33334
+offset_top = -37.333336
+offset_right = -242.66664
+offset_bottom = -341.33328
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.35, 1.35)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("5_a41cf")
+stretch_mode = 0
+
+[node name="Desk_inside" type="Sprite2D" parent="." unique_id=901654861]
+z_index = 15
+position = Vector2(-108, -8)
+texture = ExtResource("4_a41cf")
+offset = Vector2(120, -100)
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="Desk_exit" type="TextureButton" parent="Desk_inside" unique_id=2037786271]
+clip_contents = true
+custom_minimum_size = Vector2(8, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 37.0
+offset_top = -40.0
+offset_right = -267.0
+offset_bottom = -344.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("5_a41cf")
+stretch_mode = 0
+
+[node name="Note_button" type="Button" parent="Desk_inside" unique_id=85762522]
+z_index = 11
+offset_left = -29.0
+offset_top = 10.999998
+offset_right = -21.0
+offset_bottom = 18.999998
+rotation = 0.51590335
+scale = Vector2(6.0448475, -4.302832)
+flat = true
+
+[node name="Calendar_button" type="Button" parent="Desk_inside" unique_id=703118187]
+z_index = 11
+offset_left = -25.0
+offset_top = 14.0
+offset_right = -17.0
+offset_bottom = 22.0
+rotation = 0.4582173
+scale = Vector2(6.0861425, 3.3285902)
+flat = true
+
+[node name="open" type="AudioStreamPlayer2D" parent="." unique_id=548431927]
+stream = ExtResource("6_negdf")
+volume_db = -20.0
+pitch_scale = 1.1
+max_distance = 240.0
+attenuation = 2.143547
+bus = &"environment"
+
+[node name="button_pressed" type="AudioStreamPlayer2D" parent="." unique_id=706234339]
+stream = ExtResource("7_1hnka")
+volume_db = -20.0
+max_polyphony = 4
+
+[connection signal="body_entered" from="player_detector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="player_detector" to="." method="_on_player_detector_body_exited"]
+[connection signal="pressed" from="Calendar/calendar_exit" to="." method="_on_calendar_exit_pressed"]
+[connection signal="pressed" from="Note/note_exit" to="." method="_on_note_exit_pressed"]
+[connection signal="pressed" from="Desk_inside/Desk_exit" to="." method="_on_desk_exit_pressed"]
+[connection signal="pressed" from="Desk_inside/Note_button" to="." method="_on_note_button_pressed"]
+[connection signal="pressed" from="Desk_inside/Calendar_button" to="." method="_on_calendar_button_pressed"]

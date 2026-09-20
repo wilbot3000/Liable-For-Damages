@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://b7ob85cqc4hem"]
+
+[ext_resource type="Texture2D" uid="uid://cgi3clr4r3ss5" path="res://Assets/sprites/big tiles-Sheet.png" id="1_hpvv5"]
+[ext_resource type="Script" uid="uid://bl3ffgo4md0o8" path="res://scripts/door.gd" id="2_83dcw"]
+[ext_resource type="PackedScene" uid="uid://djqrojswtfprm" path="res://scenes/mouse_detector.tscn" id="3_la1wf"]
+[ext_resource type="Texture2D" uid="uid://b6j43gm3541nn" path="res://Assets/sprites/black.jpg" id="4_la1wf"]
+[ext_resource type="AudioStream" uid="uid://se18uuj80320" path="res://Assets/othersounds/soundreality-opening-door-411632.mp3" id="5_18pbm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18pbm"]
+size = Vector2(18, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5w8r"]
+size = Vector2(51, 28)
+
+[node name="door" type="Sprite2D" unique_id=594997338]
+texture = ExtResource("1_hpvv5")
+offset = Vector2(111, -105)
+hframes = 7
+vframes = 7
+frame = 46
+script = ExtResource("2_83dcw")
+
+[node name="mouse_detector" parent="." unique_id=997082355 instance=ExtResource("3_la1wf")]
+z_index = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mouse_detector" unique_id=541351951]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_18pbm")
+
+[node name="player_detector" type="Area2D" parent="." unique_id=1951734635]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detector" unique_id=2071427177]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_q5w8r")
+
+[node name="black" type="Sprite2D" parent="." unique_id=182586536]
+visible = false
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+z_index = 20
+texture = ExtResource("4_la1wf")
+
+[node name="animation" type="Timer" parent="." unique_id=1785255231]
+wait_time = 0.5
+one_shot = true
+
+[node name="door_open" type="AudioStreamPlayer2D" parent="." unique_id=1110901315]
+stream = ExtResource("5_18pbm")
+volume_db = -30.0
+pitch_scale = 0.9
+max_distance = 4096.0
+attenuation = 1.1892073
+bus = &"environment"
+
+[connection signal="body_entered" from="player_detector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="player_detector" to="." method="_on_player_detector_body_exited"]
+[connection signal="timeout" from="animation" to="." method="_on_animation_timeout"]

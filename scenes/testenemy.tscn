@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cghpce54oag0c"]
+
+[ext_resource type="Texture2D" uid="uid://cw6x0185iq1hg" path="res://Assets/sprites/yellow.jpg" id="1_tpr7q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5sw1c"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1753987745]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1859839352]
+shape = SubResource("CircleShape2D_5sw1c")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=309708296]
+position = Vector2(-1.0000038, -3.8146973e-06)
+scale = Vector2(0.00625, 0.0111111)
+texture = ExtResource("1_tpr7q")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=991112807]
+navigation_layers = 17
+avoidance_enabled = true

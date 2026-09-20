@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cog381crsbq04"]
+
+[ext_resource type="Script" uid="uid://cfq75k5a70iay" path="res://scripts/attack_sledge_hitbox.gd" id="1_c2yk7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yp5lh"]
+size = Vector2(6, 4.0004883)
+
+[node name="Area2D" type="Area2D" unique_id=1683499718]
+script = ExtResource("1_c2yk7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=668031980]
+position = Vector2(3, -2)
+shape = SubResource("RectangleShape2D_yp5lh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

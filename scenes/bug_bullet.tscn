@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://betk5nmp8xn2a"]
+
+[ext_resource type="Script" uid="uid://cu5ipuaykjejq" path="res://scripts/bullet_code.gd" id="1_ewrfj"]
+[ext_resource type="Texture2D" uid="uid://dga5k5kldbgpp" path="res://Assets/sprites/flying_enemy-Sheet.png" id="2_dkitf"]
+[ext_resource type="Script" uid="uid://ec0o88rim630" path="res://scripts/attack_zone.gd" id="3_84xku"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xix18"]
+radius = 1.0
+height = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6upia"]
+atlas = ExtResource("2_dkitf")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rv7tf"]
+atlas = ExtResource("2_dkitf")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_brsvg"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_6upia")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_rv7tf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t88ie"]
+radius = 1.0
+height = 6.0
+
+[node name="Area2D" type="Area2D" unique_id=510390273]
+collision_layer = 2048
+collision_mask = 2048
+script = ExtResource("1_ewrfj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=346868789]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_xix18")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1703875171]
+z_index = 3
+position = Vector2(2, 0)
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_brsvg")
+autoplay = "default"
+frame_progress = 0.00996111
+
+[node name="Enemy_attack" type="Area2D" parent="." unique_id=1586925686]
+rotation = 1.5707964
+script = ExtResource("3_84xku")
+metadata/_custom_type_script = "uid://ec0o88rim630"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_attack" unique_id=1644639609]
+shape = SubResource("CapsuleShape2D_t88ie")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
